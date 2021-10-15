@@ -1,0 +1,18 @@
+{
+    "hitems": [
+        {
+            "name": "CodeTest - WAMP",
+            "path" : "L:\\wamp64\\www\\projects\\tsugi\\mod\\codetest",
+            "description": "",
+            "type": "directory",
+            "tags": ["WAMP"],
+            "projectId": "1634321071105"
+        }
+    ],
+    "projects": {
+        "1634321071105": {
+            "name": "Juez LTI",
+            "color": "#eee5f7"
+        }
+    }
+}
