@@ -16,11 +16,9 @@ async function createWindow() {
     width: 1080,
     height: 720,
     webPreferences: {
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: process.env
-        .ELECTRON_NODE_INTEGRATION as unknown as boolean,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+      // TODO: This should be replaced with a preload.js file that imports ipcRenderer and add's it to window.ipcRenderer
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
