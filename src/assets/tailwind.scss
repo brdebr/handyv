@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-container {
+    @apply min-h-screen;
+    @apply bg-gradient-to-b from-white to-blueGray-200;
+}
+
+.hitem-folder {
+    @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden;
+}
+
+.folder-button {
+    @apply bg-white rounded hover: bg-blueGray-50;
+    @apply border border-orange-400;
+    @apply hover: border-orange-700;
+    @apply transition-colors hover: cursor-pointer;
+    @apply active: border-orange-800;
+    @apply transition-colors;
+}
