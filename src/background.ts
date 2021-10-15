@@ -3,7 +3,10 @@
 import { app, protocol, BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
+import { initHandlers } from "@/backend";
 const isDevelopment = process.env.NODE_ENV !== "production";
+
+const appPath = process.env.PORTABLE_EXECUTABLE_DIR || __dirname; // === /dist_electron
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -32,6 +35,8 @@ async function createWindow() {
     win.loadURL("app://./index.html");
   }
 }
+
+initHandlers(appPath);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {

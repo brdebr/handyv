@@ -1,16 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <h2>Handyv</h2>
+  <div>Items list</div>
+  <hitems-list />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent, onMounted } from "vue";
+import HitemsList from "@/components/HitemsList.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    HitemsList,
+  },
+  setup() {
+    const store = useStore();
+    onMounted(() => {
+      console.log("start");
+      store.dispatch("fetchHitems").then(() => {
+        console.log("ya");
+      });
+    });
   },
 });
 </script>
