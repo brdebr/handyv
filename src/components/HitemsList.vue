@@ -60,6 +60,7 @@
           <div
             class="terminal-button sudo group"
             title="Open administrator terminal in folder"
+            @click="openTerminalSudo(item.path)"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,5 +107,8 @@ const openFolder = (path) => {
 }
 const openTerminal = (path) => {
   ipcRenderer.invoke("open-terminal", path)
+}
+const openTerminalSudo = (path) => {
+  ipcRenderer.invoke("open-terminal-sudo", path)
 }
 </script>

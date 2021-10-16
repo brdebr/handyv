@@ -24,7 +24,6 @@ export const initHandlers = (appPath: string): void => {
   });
 
   ipcMain.handle("open-terminal", (ev, folderPath) => {
-    console.log("SPAWN " + folderPath);
     exec(`start cmd.exe /K cd /D ${folderPath}`, {
       // @ts-ignore
       cwd: folderPath,
@@ -34,13 +33,17 @@ export const initHandlers = (appPath: string): void => {
       },
       detached: true,
     });
-    // spawn("start cmd", {
-    //   // @ts-ignore
-    //   cwd: folderPath,
-    //   env: {
-    //     FROM_HANDYV: true,
-    //   },
-    //   detached: true,
-    // });
+  });
+  ipcMain.handle("open-terminal-sudo", (ev, folderPath) => {
+    exec(`Start-Process -Verb RunAs cmd.exe -Args "/K cd /D ${folderPath}"`, {
+      // @ts-ignore
+      cwd: folderPath,
+      shell: "powershell",
+      env: {
+        // @ts-ignore
+        FROM_HANDYV: true,
+      },
+      detached: true,
+    });
   });
 };
