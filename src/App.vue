@@ -1,7 +1,9 @@
 <template>
-  <h2>Handyv</h2>
-  <div>Items list</div>
-  <hitems-list />
+  <div class="main-container flex flex-col px-4 py-4">
+    <h2>Handyv</h2>
+    <div class="my-3">Items list</div>
+    <hitems-list />
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,12 +29,4 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
