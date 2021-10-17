@@ -1,6 +1,6 @@
 <template>
   <div
-    class="terminal-button group"
+    class="terminal-button hitem-folder-button group"
     :class="{ sudo: sudo }"
     title="Open terminal in folder"
   >
@@ -8,6 +8,7 @@
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
+      class="group-hover:text-indigo-800 group-hover:active:text-green-600"
     >
       <path
         fill-rule="evenodd"
@@ -25,19 +26,16 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .terminal-button {
-  @apply bg-white rounded hover:bg-blueGray-50;
   @apply border border-orange-400;
   @apply hover:border-blue-700;
-  @apply transition-colors hover:cursor-pointer;
   @apply active:border-orange-800;
-  @apply transition-colors;
   &.sudo {
     > svg {
-      @apply h-7 w-7 px-1 py-1 text-blue-800 group-hover:text-blue-500 group-hover:active:text-green-600 transition-colors;
+      @apply text-gray-700;
     }
   }
   > svg {
-    @apply h-7 w-7 px-1 py-1 text-blueGray-700 group-hover:text-blue-500 group-hover:active:text-green-600 transition-colors;
+    @apply h-7 w-7 px-1 py-1 text-gray-500 transition-colors;
   }
 }
 </style>

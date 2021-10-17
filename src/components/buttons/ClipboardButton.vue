@@ -1,12 +1,12 @@
 <template>
   <div
-    class="terminal-button group"
+    class="clipboard-button hitem-folder-button group"
     :class="{ sudo: sudo }"
-    title="Copy to clipboard"
+    title="Copy path to clipboard"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
+      class="group-hover:text-blueGray-800"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -23,3 +23,13 @@ const props = defineProps({
   sudo: Boolean,
 });
 </script>
+<style lang="scss">
+.clipboard-button {
+  @apply border border-orange-400;
+  @apply hover:border-blue-700;
+  @apply active:border-orange-800;
+  > svg {
+    @apply h-7 w-7 px-1 py-1 text-blueGray-600 transition-colors;
+  }
+}
+</style>

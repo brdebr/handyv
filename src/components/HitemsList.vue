@@ -55,20 +55,7 @@
             sudo
           />
           <OpenTerminalButton @click="openTerminal(item.path)" />
-          <div class="terminal-button group" @click="openInVscode(item.path)">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
+          <VscodeButton @click="openInVscode(item.path)" />
         </div>
       </div>
     </div>
@@ -83,6 +70,7 @@ import { useStore } from "vuex";
 import ClipboardButton from "@/components/buttons/ClipboardButton";
 import OpenFolderButton from "@/components/buttons/OpenFolderButton";
 import OpenTerminalButton from "@/components/buttons/OpenTerminalButton";
+import VscodeButton from "@/components/buttons/VscodeButton";
 
 const store = useStore();
 
@@ -108,7 +96,12 @@ const openTerminalSudo = (path) => {
 
 <style>
 .hitem-folder {
-    @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden;
-    @apply hover:bg-orange-400 hover:bg-opacity-20;
+  @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden transition-all;
+  @apply hover:bg-orange-400 hover:bg-opacity-20;
+}
+.hitem-folder-button {
+  @apply rounded;
+  @apply bg-white hover:bg-blueGray-100;
+  @apply transition-colors hover:cursor-pointer;
 }
 </style>
