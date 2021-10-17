@@ -29,6 +29,7 @@
             px-3
             py-2
           "
+          @contextmenu="openFolder(element.path)"
         >
           <div
             class="
