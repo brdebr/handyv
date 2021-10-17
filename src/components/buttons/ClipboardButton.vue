@@ -6,7 +6,7 @@
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="group-hover:text-blueGray-800"
+      class="group-hover:text-blueGray-800 group-hover:active:text-green-600"
       viewBox="0 0 20 20"
       fill="currentColor"
     >

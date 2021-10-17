@@ -1,6 +1,6 @@
 <template>
   <div class="main-container flex flex-col px-4 py-4">
-    <div class="flex justify-center min-w-min">
+    <div class="flex justify-center min-w-min mb-2 sm:mb-4">
       <svg
         width="349.707"
         height="93.116"
@@ -32,28 +32,19 @@
         </g>
       </svg>
     </div>
-    <div class="my-3">Items list</div>
     <hitems-list />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted } from "vue";
+<script setup>
+import { onMounted } from "vue";
 import HitemsList from "@/components/HitemsList.vue";
 import { useStore } from "vuex";
 
-export default defineComponent({
-  name: "App",
-  components: {
-    HitemsList,
-  },
-  setup() {
-    const store = useStore();
-    onMounted(async () => {
-      console.log("start");
-      await store.dispatch("fetchHitems")
-    });
-  },
+const store = useStore();
+onMounted(async () => {
+  console.log("start");
+  await store.dispatch("fetchHitems");
 });
 </script>
 

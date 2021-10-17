@@ -1,7 +1,8 @@
 import { ipcMain, shell } from "electron";
 import { getHitemsList, saveHitemsList } from "@/persistence";
 import ipcMethod from "@/types/icpMethod";
-import { spawn, exec } from "child_process";
+import { exec } from "child_process";
+import fs from "fs";
 
 let APP_PATH: string | null = null;
 
@@ -27,9 +28,15 @@ export const initHandlers = (appPath: string): void => {
   });
 
   ipcMain.handle("open-folder", (ev, folderPath) => {
+    if (!fs.lstatSync(folderPath).isDirectory()) {
+      throw new Error(`folderPath:${folderPath} - is not a valid value`);
+    }
     shell.openPath(folderPath);
   });
   ipcMain.handle("open-folder-vscode", (ev, folderPath) => {
+    if (!fs.lstatSync(folderPath).isDirectory()) {
+      throw new Error(`folderPath:${folderPath} - is not a valid value`);
+    }
     exec(`code ${folderPath}`, {
       // @ts-ignore
       cwd: folderPath,
@@ -38,6 +45,9 @@ export const initHandlers = (appPath: string): void => {
     });
   });
   ipcMain.handle("open-terminal", (ev, folderPath) => {
+    if (!fs.lstatSync(folderPath).isDirectory()) {
+      throw new Error(`folderPath:${folderPath} - is not a valid value`);
+    }
     exec(`start cmd.exe /K cd /D ${folderPath}`, {
       // @ts-ignore
       cwd: folderPath,
@@ -49,6 +59,9 @@ export const initHandlers = (appPath: string): void => {
     });
   });
   ipcMain.handle("open-terminal-sudo", (ev, folderPath) => {
+    if (!fs.lstatSync(folderPath).isDirectory()) {
+      throw new Error(`folderPath:${folderPath} - is not a valid value`);
+    }
     exec(`Start-Process -Verb RunAs cmd.exe -Args "/K cd /D ${folderPath}"`, {
       // @ts-ignore
       cwd: folderPath,
