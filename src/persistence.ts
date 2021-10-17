@@ -21,3 +21,10 @@ export const getHitemsList = (appPath: string): Array<Hitem> => {
   ) as DataJsonFile;
   return hitems;
 };
+
+export const saveHitemsList = (appPath: string, items: Array<Hitem>): void => {
+  const uri = path.resolve(appPath, "data.json");
+  const data = JSON.parse(fs.readFileSync(uri).toString()) as DataJsonFile;
+  data.hitems = items;
+  fs.writeFileSync(uri, JSON.stringify(data, null, 4));
+};

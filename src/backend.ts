@@ -1,5 +1,5 @@
 import { ipcMain, shell } from "electron";
-import { getHitemsList } from "@/persistence";
+import { getHitemsList, saveHitemsList } from "@/persistence";
 import ipcMethod from "@/types/icpMethod";
 import { spawn, exec } from "child_process";
 
@@ -18,17 +18,23 @@ export const initHandlers = (appPath: string): void => {
     }
     return getHitemsList(APP_PATH);
   });
+  ipcMain.handle("set-hitems" as ipcMethod, (event, payload) => {
+    console.log(`${new Date().toISOString()} - Saving nodes into: ${APP_PATH}`);
+    if (!APP_PATH) {
+      throw new Error(`appPath:${APP_PATH} - is not a valid value`);
+    }
+    saveHitemsList(APP_PATH, payload);
+  });
 
   ipcMain.handle("open-folder", (ev, folderPath) => {
     shell.openPath(folderPath);
   });
-
   ipcMain.handle("open-folder-vscode", (ev, folderPath) => {
     exec(`code ${folderPath}`, {
       // @ts-ignore
       cwd: folderPath,
       // @ts-ignore
-      detached: true
+      detached: true,
     });
   });
   ipcMain.handle("open-terminal", (ev, folderPath) => {

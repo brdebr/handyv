@@ -16,6 +16,11 @@ export default createStore({
       const hitems = await ipcRenderer.invoke("get-hitems" as ipcMethod);
       store.commit("set_hitems", hitems);
     },
+    async saveHitems(store, hitems) {
+      const clonedArray = JSON.parse(JSON.stringify(hitems));
+      await ipcRenderer.invoke("set-hitems" as ipcMethod, clonedArray);
+      store.commit("set_hitems", hitems);
+    },
   },
   modules: {},
 });

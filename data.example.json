@@ -2,11 +2,57 @@
     "hitems": [
         {
             "name": "CodeTest - WAMP",
-            "path" : "L:\\wamp64\\www\\projects\\tsugi\\mod\\codetest",
+            "path": "L:\\wamp64\\www\\projects\\tsugi\\mod\\codetest",
             "description": "",
             "type": "directory",
-            "tags": ["WAMP"],
+            "tags": [
+                "WAMP"
+            ],
             "projectId": "1634321071105"
+        },
+        {
+            "name": "CodeTest - Spring",
+            "path": "L:\\DEV\\Git\\Juez-LTI\\question-repository",
+            "description": "",
+            "type": "directory",
+            "tags": [
+                "Spring",
+                "MongoDB"
+            ],
+            "projectId": "1634321071105"
+        },
+        {
+            "name": "Sakai master - Git",
+            "path": "L:\\DEV\\Git\\sakai-master",
+            "description": "",
+            "type": "directory",
+            "tags": [
+                "Java"
+            ],
+            "projectId": null
+        },
+        {
+            "name": "Sakai master- Tomcat",
+            "path": "L:\\DEV\\Sakai-instances\\sakai-21-MASTER",
+            "description": "",
+            "type": "directory",
+            "tags": [
+                "Java"
+            ],
+            "projectId": null
+        },
+        {
+            "name": "Handyv",
+            "path": "L:\\DEV\\Personal\\handyv\\dist_electron\\data.json",
+            "description": "",
+            "type": "directory",
+            "tags": [
+                "Electron",
+                "Node",
+                "Vue 3",
+                "Tailwind"
+            ],
+            "projectId": null
         }
     ],
     "projects": {

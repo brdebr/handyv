@@ -1,5 +1,5 @@
 <template>
-  <div class="hitems-list flex flex-col gap-3">
+  <div>
     <draggable
       v-model="hitems"
       group="hitems"
@@ -7,10 +7,12 @@
       @end="drag = false"
       item-key="name"
       tag="transition-group"
+      :animation="200"
+      ghostClass="hitem-ghost"
       :component-data="{
         tag: 'div',
-        type: 'transition-group',
-        name: !drag ? 'hitems-list' : null,
+        type: '',
+        name: !drag ? 'hitems-list-transition' : null,
       }"
       class="hitems-list flex flex-col gap-3"
     >
@@ -96,7 +98,7 @@ const store = useStore();
 const hitems = computed({
   get: () => store.state.hitems,
   set: (val) => {
-    store.commit("set_hitems", val);
+    store.dispatch("saveHitems", val);
   },
 });
 
@@ -119,8 +121,11 @@ const openTerminalSudo = (path) => {
 </script>
 
 <style>
-.hitems-list-move {
-  transition: transform 1s;
+.hitems-list-transition-move {
+  transition: transform 0.5;
+}
+.hitem-ghost {
+  opacity: 0.9;
 }
 .hitem-folder {
   @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden transition-all;
