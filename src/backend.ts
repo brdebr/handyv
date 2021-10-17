@@ -23,6 +23,14 @@ export const initHandlers = (appPath: string): void => {
     shell.openPath(folderPath);
   });
 
+  ipcMain.handle("open-folder-vscode", (ev, folderPath) => {
+    exec(`code ${folderPath}`, {
+      // @ts-ignore
+      cwd: folderPath,
+      // @ts-ignore
+      detached: true
+    });
+  });
   ipcMain.handle("open-terminal", (ev, folderPath) => {
     exec(`start cmd.exe /K cd /D ${folderPath}`, {
       // @ts-ignore
