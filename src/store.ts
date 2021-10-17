@@ -7,14 +7,14 @@ export default createStore({
     hitems: null,
   },
   mutations: {
-    set_items(state, payload) {
+    set_hitems(state, payload) {
       state.hitems = payload;
     },
   },
   actions: {
     async fetchHitems(store) {
       const hitems = await ipcRenderer.invoke("get-hitems" as ipcMethod);
-      store.commit("set_items", hitems);
+      store.commit("set_hitems", hitems);
     },
   },
   modules: {},

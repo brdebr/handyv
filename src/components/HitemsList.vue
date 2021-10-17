@@ -1,71 +1,90 @@
 <template>
   <div class="hitems-list flex flex-col gap-3">
-    <div
-      v-for="item in hitems"
-      :key="item.name"
-      class="
-        hitem-folder
-        rounded
-        flex
-        items-center
-        flex-wrap
-        sm:flex-nowrap
-        gap-4
-        px-3
-        py-2
-      "
+    <draggable
+      v-model="hitems"
+      group="hitems"
+      @start="drag = true"
+      @end="drag = false"
+      item-key="name"
+      tag="transition-group"
+      :component-data="{
+        tag: 'div',
+        type: 'transition-group',
+        name: !drag ? 'hitems-list' : null,
+      }"
+      class="hitems-list flex flex-col gap-3"
     >
-      <div
-        class="
-          pt-2
-          sm:pt-0
-          w-full
-          sm:w-auto
-          font-semibold
-          overflow-ellipsis overflow-hidden
-          select-none
-          whitespace-nowrap
-        "
-        :title="item.name"
-      >
-        {{ item.name }}
-      </div>
-      <div class="flex items-center w-full sm:flex-1">
+      <template #item="{ element }">
         <div
           class="
-            text-gray-900
-            flex-grow-0 flex-shrink
-            text-opacity-60
-            leading-none
-            overflow-ellipsis overflow-hidden
-            pr-2
-            select-none
-            whitespace-nowrap
+            hitem-folder
+            rounded
+            flex
+            items-center
+            flex-wrap
+            sm:flex-nowrap
+            gap-4
+            px-3
+            py-2
           "
-          :title="item.path"
         >
-          {{ item.path }}
+          <div
+            class="
+              pt-2
+              sm:pt-0
+              w-full
+              sm:w-auto
+              font-semibold
+              overflow-ellipsis overflow-hidden
+              select-none
+              whitespace-nowrap
+            "
+            :title="element.name"
+          >
+            {{ element.name }}
+          </div>
+          <div class="flex items-center w-full sm:flex-1">
+            <div
+              class="
+                text-gray-900
+                flex-grow-0 flex-shrink
+                text-opacity-60
+                leading-none
+                overflow-ellipsis overflow-hidden
+                pr-2
+                select-none
+                whitespace-nowrap
+              "
+              :title="element.path"
+            >
+              {{ element.path }}
+            </div>
+            <div class="botonera ml-auto flex gap-2">
+              <ClipboardButton @click="copyToClipBoard(element.path)" />
+              <OpenFolderButton @click="openFolder(element.path)" />
+              <OpenTerminalButton
+                title="Open administrator terminal in folder"
+                @click="openTerminalSudo(element.path)"
+                sudo
+              />
+              <OpenTerminalButton @click="openTerminal(element.path)" />
+              <VscodeButton @click="openInVscode(element.path)" />
+            </div>
+          </div>
         </div>
-        <div class="botonera ml-auto flex gap-2">
-          <ClipboardButton @click="copyToClipBoard(item.path)" />
-          <OpenFolderButton @click="openFolder(item.path)" />
-          <OpenTerminalButton
-            title="Open administrator terminal in folder"
-            @click="openTerminalSudo(item.path)"
-            sudo
-          />
-          <OpenTerminalButton @click="openTerminal(item.path)" />
-          <VscodeButton @click="openInVscode(item.path)" />
-        </div>
-      </div>
-    </div>
+      </template>
+    </draggable>
   </div>
 </template>
 
 <script setup>
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { ipcRenderer } from "electron";
 import { useStore } from "vuex";
+
+import draggable from "vuedraggable";
+
+const drag = ref(false);
 
 import ClipboardButton from "@/components/buttons/ClipboardButton";
 import OpenFolderButton from "@/components/buttons/OpenFolderButton";
@@ -74,7 +93,12 @@ import VscodeButton from "@/components/buttons/VscodeButton";
 
 const store = useStore();
 
-const hitems = computed(() => store.state.hitems);
+const hitems = computed({
+  get: () => store.state.hitems,
+  set: (val) => {
+    store.commit("set_hitems", val);
+  },
+});
 
 const copyToClipBoard = async (path) => {
   await navigator.clipboard.writeText(path);
@@ -95,6 +119,9 @@ const openTerminalSudo = (path) => {
 </script>
 
 <style>
+.hitems-list-move {
+  transition: transform 1s;
+}
 .hitem-folder {
   @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden transition-all;
   @apply hover:bg-orange-400 hover:bg-opacity-20;

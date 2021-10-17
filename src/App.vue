@@ -49,11 +49,9 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    onMounted(() => {
+    onMounted(async () => {
       console.log("start");
-      store.dispatch("fetchHitems").then(() => {
-        console.log("ya");
-      });
+      await store.dispatch("fetchHitems")
     });
   },
 });
