@@ -50,4 +50,27 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background: #ff910080;
+  &:hover {
+    background: #bf360c5b;
+  }
+  &:active {
+    border-radius: 14px;
+    background: #bf360c5b;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: #fff1745b;
+  &:hover {
+    background: #ffd93279;
+  }
+}
+</style>
