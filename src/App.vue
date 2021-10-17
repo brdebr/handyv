@@ -1,12 +1,12 @@
 <template>
   <div class="main-container flex flex-col px-4 py-4">
-    <div class="flex justify-center min-w-min mb-2 sm:mb-4">
+    <div class="flex justify-center min-w-min mb-2">
       <svg
         width="349.707"
         height="93.116"
         viewBox="0 0 349.707 100"
         xmlns="http://www.w3.org/2000/svg"
-        class="h-[28px] w-[100px] sm:h-[50px] sm:w-[150px]"
+        class="h-[28px] w-[100px] sm:h-[50px] sm:w-[150px] overflow-visible"
       >
         <g
           id="svgGroup"
@@ -32,13 +32,15 @@
         </g>
       </svg>
     </div>
-    <hitems-list />
+    <AddHitem />
+    <HitemsList />
   </div>
 </template>
 
 <script setup>
 import { onMounted } from "vue";
 import HitemsList from "@/components/HitemsList.vue";
+import AddHitem from "@/components/AddHitem.vue";
 import { useStore } from "vuex";
 
 const store = useStore();

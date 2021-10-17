@@ -1,0 +1,124 @@
+<template>
+  <div
+    class="
+      bg-yellow-200
+      mb-4
+      py-3
+      px-3
+      rounded
+      flex
+      gap-6
+      items-center
+      justify-evenly
+    "
+  >
+    <div class="font-semibold select-none whitespace-nowrap">Add Item</div>
+    <div class="flex-1 flex gap-2 w-1">
+      <div class="w-4/12">
+        <input
+          type="text"
+          :title="name"
+          class="
+            h-7
+            px-2
+            w-full
+            rounded
+            outline-none
+            ring-1
+            focus:ring-2
+            ring-orange-300
+            transition-shadow
+            placeholder-gray-500 placeholder-opacity-75
+            focus:placeholder-opacity-30
+            caret-orange-300
+          "
+          placeholder="Item name"
+          v-model="name"
+        />
+      </div>
+      <div class="w-8/12">
+        <div
+          class="h-7 rounded flex items-center bg-white select-none"
+          :title="path"
+        >
+          <div
+            class="
+              px-3
+              w-full
+              overflow-ellipsis overflow-hidden
+              whitespace-nowrap
+              text-gray-800 text-opacity-75
+            "
+            :class="{
+              'text-opacity-50': !path,
+            }"
+          >
+            {{ path || "Item path will show here once you select one..." }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <div>
+        <OpenFolderButton @click="selectFolder" />
+      </div>
+      <div>
+        <OpenFileButton @click="selectFile" />
+      </div>
+    </div>
+    <div>
+      <AcceptButton @click="saveHitem" :disabled="!valid" />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import OpenFolderButton from "@/components/buttons/OpenFolderButton";
+import OpenFileButton from "@/components/buttons/OpenFileButton";
+import AcceptButton from "@/components/buttons/AcceptButton";
+import { ipcRenderer } from "electron";
+import { computed, ref } from "@vue/reactivity";
+import { useStore } from "vuex";
+
+const path = ref(null);
+const name = ref(null);
+
+const type = ref(null);
+
+const valid = computed(() => {
+  return path.value && name.value;
+});
+
+const store = useStore();
+
+const saveHitem = () => {
+  if (!valid.value) {
+    return;
+  }
+  store.dispatch("addHitem", {
+    name: name.value,
+    path: path.value,
+    type: type.value,
+  });
+  resetData()
+};
+
+const resetData = () => {
+  name.value = null;
+  path.value = null;
+  type.value = null;
+};
+
+const selectFolder = async () => {
+  const folderPath = await ipcRenderer.invoke("select-folder");
+  path.value = folderPath;
+  type.value = "directory";
+};
+const selectFile = async () => {
+  const filePath = await ipcRenderer.invoke("select-file");
+  path.value = filePath;
+  type.value = "file";
+};
+</script>
+
+<style lang="scss" scoped></style>

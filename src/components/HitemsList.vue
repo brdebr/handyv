@@ -5,7 +5,7 @@
       group="hitems"
       @start="drag = true"
       @end="drag = false"
-      item-key="name"
+      item-key="path"
       tag="transition-group"
       :animation="200"
       ghostClass="hitem-ghost"
@@ -45,13 +45,13 @@
           >
             {{ element.name }}
           </div>
-          <div class="flex items-center w-full sm:flex-1">
+          <div class="flex items-center w-full sm:flex-1 sm:w-1">
             <div
               class="
                 text-gray-900
                 flex-grow-0 flex-shrink
                 text-opacity-60
-                leading-none
+                leading-1
                 overflow-ellipsis overflow-hidden
                 pr-2
                 select-none
@@ -71,6 +71,7 @@
               />
               <OpenTerminalButton @click="openTerminal(element.path)" />
               <VscodeButton @click="openInVscode(element.path)" />
+              <DeleteButton @click="deleteItem(element.path)" />
             </div>
           </div>
         </div>
@@ -92,6 +93,7 @@ import ClipboardButton from "@/components/buttons/ClipboardButton";
 import OpenFolderButton from "@/components/buttons/OpenFolderButton";
 import OpenTerminalButton from "@/components/buttons/OpenTerminalButton";
 import VscodeButton from "@/components/buttons/VscodeButton";
+import DeleteButton from "@/components/buttons/DeleteButton";
 
 const store = useStore();
 
@@ -101,6 +103,10 @@ const hitems = computed({
     store.dispatch("saveHitems", val);
   },
 });
+
+const deleteItem = (path) => {
+  store.dispatch("deleteHitem", path);
+};
 
 const copyToClipBoard = async (path) => {
   await navigator.clipboard.writeText(path);

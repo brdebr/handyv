@@ -1,7 +1,6 @@
 <template>
   <div
     class="clipboard-button hitem-folder-button group"
-    :class="{ sudo: sudo }"
     title="Copy path to clipboard"
   >
     <svg
@@ -19,9 +18,6 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  sudo: Boolean,
-});
 </script>
 <style lang="scss">
 .clipboard-button {

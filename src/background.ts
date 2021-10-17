@@ -18,7 +18,7 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 1080,
     height: 720,
-    minWidth: 264,
+    minWidth: 336,
     minHeight: 320,
     webPreferences: {
       // TODO: This should be replaced with a preload.js file that imports ipcRenderer and add's it to window.ipcRenderer

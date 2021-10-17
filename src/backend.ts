@@ -1,4 +1,4 @@
-import { ipcMain, shell } from "electron";
+import { dialog, ipcMain, shell } from "electron";
 import { getHitemsList, saveHitemsList } from "@/persistence";
 import ipcMethod from "@/types/icpMethod";
 import { exec } from "child_process";
@@ -26,6 +26,31 @@ export const initHandlers = (appPath: string): void => {
     }
     saveHitemsList(APP_PATH, payload);
   });
+
+  // Add actions
+
+  ipcMain.handle("select-folder", async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      properties: ["openDirectory"],
+      title: "Folder to save",
+    });
+    if (!filePaths.length) {
+      return "";
+    }
+    return filePaths[0];
+  });
+  ipcMain.handle("select-file", async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      properties: ["openFile"],
+      title: "File to save",
+    });
+    if (!filePaths.length) {
+      return "";
+    }
+    return filePaths[0];
+  });
+
+  // Folder actions
 
   ipcMain.handle("open-folder", (ev, folderPath) => {
     if (!fs.lstatSync(folderPath).isDirectory()) {
