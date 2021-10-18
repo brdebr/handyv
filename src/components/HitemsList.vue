@@ -81,6 +81,12 @@
             </div>
             <div class="ml-auto flex gap-2" v-else-if="element.type === 'link'">
               <LinkButton
+                title="Open link in edge"
+                edge
+                :default="false"
+                @click="openLinkEdge(element.path)"
+              />
+              <LinkButton
                 title="Open link in firefox in private"
                 firefox
                 private
@@ -140,6 +146,9 @@ const copyToClipBoard = async (path) => {
   await navigator.clipboard.writeText(path);
 };
 
+const openLinkEdge = (path) => {
+  ipcRenderer.invoke("open-link-edge", path);
+};
 const openLinkFirefox = (path) => {
   ipcRenderer.invoke("open-link-firefox", path);
 };

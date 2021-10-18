@@ -61,6 +61,10 @@ export const initHandlers = (appPath: string): void => {
   ipcMain.handle("open-link", (ev, link) => {
     shell.openExternal(link, { activate: true });
   });
+  ipcMain.handle("open-link-edge", (ev, link) => {
+    const edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\";
+    exec(`"${edgePath}msedge.exe" ${link}`);
+  });
   ipcMain.handle("open-link-firefox", (ev, link) => {
     const firefoxPath = "C:\\Program Files\\Mozilla Firefox\\";
     // -private-window
