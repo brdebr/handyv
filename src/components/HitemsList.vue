@@ -19,7 +19,7 @@
       <template #item="{ element }">
         <div
           class="
-            hitem-folder
+            hitem-item
             rounded
             flex
             items-center
@@ -29,6 +29,7 @@
             px-3
             py-2
           "
+          :class="`${element.type}`"
           @contextmenu="openFolder(element.path)"
         >
           <div
@@ -41,6 +42,10 @@
               overflow-ellipsis overflow-hidden
               select-none
               whitespace-nowrap
+              sm:min-w-[200px]
+              lg:min-w-[250px]
+              xl:min-w-[300px]
+              2xl:min-w-[350px]
             "
             :title="element.name"
           >
@@ -62,7 +67,7 @@
             >
               {{ element.path }}
             </div>
-            <div class="botonera ml-auto flex gap-2">
+            <div class="ml-auto flex gap-2" v-if="element.type === 'directory'">
               <ClipboardButton @click="copyToClipBoard(element.path)" />
               <OpenFolderButton @click="openFolder(element.path)" />
               <OpenTerminalButton
@@ -72,6 +77,10 @@
               />
               <OpenTerminalButton @click="openTerminal(element.path)" />
               <VscodeButton @click="openInVscode(element.path)" />
+              <DeleteButton @click="deleteItem(element.path)" />
+            </div>
+            <div class="ml-auto flex gap-2" v-else-if="element.type === 'link'">
+              <LinkButton class="item" @click="openLink(element.path)" />
               <DeleteButton @click="deleteItem(element.path)" />
             </div>
           </div>
@@ -95,6 +104,7 @@ import OpenFolderButton from "@/components/buttons/OpenFolderButton";
 import OpenTerminalButton from "@/components/buttons/OpenTerminalButton";
 import VscodeButton from "@/components/buttons/VscodeButton";
 import DeleteButton from "@/components/buttons/DeleteButton";
+import LinkButton from "./buttons/LinkButton";
 
 const store = useStore();
 
@@ -113,6 +123,9 @@ const copyToClipBoard = async (path) => {
   await navigator.clipboard.writeText(path);
 };
 
+const openLink = (path) => {
+  ipcRenderer.invoke("open-link", path);
+};
 const openInVscode = (path) => {
   ipcRenderer.invoke("open-folder-vscode", path);
 };
@@ -127,16 +140,23 @@ const openTerminalSudo = (path) => {
 };
 </script>
 
-<style>
+<style lang="scss">
 .hitems-list-transition-move {
   transition: transform 0.5;
 }
 .hitem-ghost {
   opacity: 0.9;
 }
-.hitem-folder {
-  @apply bg-orange-300 bg-opacity-20 backdrop-filter backdrop-blur-md overflow-hidden transition-all;
-  @apply hover:bg-orange-400 hover:bg-opacity-20;
+.hitem-item {
+  @apply backdrop-filter backdrop-blur-md overflow-hidden transition-all;
+  &.directory {
+    @apply bg-orange-300 bg-opacity-20;
+    @apply hover:bg-orange-400 hover:bg-opacity-20;
+  }
+  &.link {
+    @apply bg-blue-300 bg-opacity-20;
+    @apply hover:bg-blue-400 hover:bg-opacity-20;
+  }
 }
 .hitem-folder-button {
   @apply rounded;

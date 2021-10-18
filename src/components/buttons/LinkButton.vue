@@ -1,17 +1,20 @@
 <template>
   <div
-    class="folder-button hitem-folder-button group"
+    class="file-button hitem-folder-button group"
     :class="{ selected: props.selected }"
-    title="Open folder in Windows Explorer"
+    title="Open file in Windows Explorer"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      class="group-hover:text-yellow-800 group-hover:active:text-green-600"
       viewBox="0 0 20 20"
       fill="currentColor"
-      class="group-hover:text-yellow-800 group-hover:active:text-green-600"
     >
       <path
-        d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+        d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
+      />
+      <path
+        d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
       />
     </svg>
   </div>
@@ -26,10 +29,15 @@ const props = defineProps({
 });
 </script>
 <style lang="scss">
-.folder-button {
+.file-button {
   @apply border border-orange-400;
   @apply hover:border-orange-700;
   @apply active:border-orange-800;
+  &.item{
+    > svg {
+      @apply text-orange-600;
+    }
+  }
   &.selected {
     @apply border-blue-800 bg-blueGray-400;
     > svg {

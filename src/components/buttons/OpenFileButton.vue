@@ -1,6 +1,7 @@
 <template>
   <div
     class="file-button hitem-folder-button group"
+    :class="{ selected: props.selected }"
     title="Open file in Windows Explorer"
   >
     <svg
@@ -18,12 +19,25 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  selected: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
 <style lang="scss">
 .file-button {
   @apply border border-orange-400;
   @apply hover:border-orange-700;
   @apply active:border-orange-800;
+  &.selected {
+    @apply border-blue-800 bg-blueGray-400;
+    > svg {
+      @apply text-white;
+    }
+  }
   > svg {
     @apply h-7 w-7 px-1 py-1 transition-colors;
     @apply text-yellow-500;

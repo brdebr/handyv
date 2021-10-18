@@ -58,6 +58,9 @@ export const initHandlers = (appPath: string): void => {
     }
     shell.openPath(folderPath);
   });
+  ipcMain.handle("open-link", (ev, folderPath) => {
+    shell.openExternal(folderPath, { activate: true });
+  });
   ipcMain.handle("open-folder-vscode", (ev, folderPath) => {
     if (!fs.lstatSync(folderPath).isDirectory()) {
       throw new Error(`folderPath:${folderPath} - is not a valid value`);

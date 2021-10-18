@@ -40,6 +40,7 @@
         <div
           class="h-7 rounded flex items-center bg-white select-none"
           :title="path"
+          v-if="type != 'link'"
         >
           <div
             class="
@@ -56,14 +57,43 @@
             {{ path || "Item path will show here once you select one..." }}
           </div>
         </div>
+        <div v-else class="flex items-center h-full">
+          <input
+            class="
+              h-7
+              px-2
+              w-full
+              rounded
+              outline-none
+              ring-1
+              focus:ring-2
+              ring-orange-300
+              transition-shadow
+              placeholder-gray-500 placeholder-opacity-75
+              focus:placeholder-opacity-30
+              caret-orange-300
+            "
+            :class="{
+              'ring-red-500': !linkValid,
+            }"
+            v-model="path"
+            type="text"
+          />
+        </div>
       </div>
     </div>
     <div class="flex gap-2">
       <div>
-        <OpenFolderButton @click="selectFolder" />
+        <OpenFolderButton
+          :selected="type === 'directory'"
+          @click="selectFolder"
+        />
       </div>
       <div>
-        <OpenFileButton @click="selectFile" />
+        <OpenFileButton :selected="type === 'file'" @click="selectFile" />
+      </div>
+      <div>
+        <LinkButton @click="selectLink" />
       </div>
     </div>
     <div>
@@ -73,6 +103,7 @@
 </template>
 
 <script setup>
+import LinkButton from "@/components/buttons/LinkButton";
 import OpenFolderButton from "@/components/buttons/OpenFolderButton";
 import OpenFileButton from "@/components/buttons/OpenFileButton";
 import AcceptButton from "@/components/buttons/AcceptButton";
@@ -86,7 +117,33 @@ const name = ref(null);
 const type = ref(null);
 
 const valid = computed(() => {
-  return path.value && name.value;
+  return (
+    path.value && name.value && (type.value === "link" ? linkValid.value : true)
+  );
+});
+
+const linkValid = computed(() => {
+  if (type.value != "link") {
+    return null;
+  }
+  try {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    if (!pattern.test(path.value)) {
+      return false;
+    }
+    new URL(path.value);
+    return true;
+  } catch (error) {
+    return false;
+  }
 });
 
 const store = useStore();
@@ -100,7 +157,7 @@ const saveHitem = () => {
     path: path.value,
     type: type.value,
   });
-  resetData()
+  resetData();
 };
 
 const resetData = () => {
@@ -108,6 +165,11 @@ const resetData = () => {
   path.value = null;
   type.value = null;
 };
+
+const selectLink = () => {
+  resetData()
+  type.value = 'link'
+}
 
 const selectFolder = async () => {
   const folderPath = await ipcRenderer.invoke("select-folder");
@@ -121,4 +183,4 @@ const selectFile = async () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>
