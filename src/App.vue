@@ -1,6 +1,6 @@
 <template>
   <div class="main-container flex flex-col px-4 py-4">
-    <div class="flex justify-center min-w-min mb-2">
+    <div class="flex justify-center min-w-min mb-2 mt-1 sm:mb-4 sm:mt-2">
       <svg
         width="349.707"
         height="93.116"
