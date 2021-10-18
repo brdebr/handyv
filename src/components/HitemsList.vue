@@ -80,7 +80,24 @@
               <DeleteButton @click="deleteItem(element.path)" />
             </div>
             <div class="ml-auto flex gap-2" v-else-if="element.type === 'link'">
-              <LinkButton class="item" @click="openLink(element.path)" />
+              <LinkButton
+                title="Open link in firefox in private"
+                firefox
+                private
+                :default="false"
+                @click="openLinkFirefox(element.path)"
+              />
+              <LinkButton
+                title="Open link in firefox"
+                firefox
+                :default="false"
+                @click="openLinkFirefox(element.path)"
+              />
+              <LinkButton
+                title="Open link in default browser"
+                class="item"
+                @click="openLink(element.path)"
+              />
               <DeleteButton @click="deleteItem(element.path)" />
             </div>
           </div>
@@ -123,6 +140,9 @@ const copyToClipBoard = async (path) => {
   await navigator.clipboard.writeText(path);
 };
 
+const openLinkFirefox = (path) => {
+  ipcRenderer.invoke("open-link-firefox", path);
+};
 const openLink = (path) => {
   ipcRenderer.invoke("open-link", path);
 };

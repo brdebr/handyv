@@ -73,6 +73,7 @@
               focus:placeholder-opacity-30
               caret-orange-300
             "
+            placeholder="Type link here"
             :class="{
               'ring-red-500': !linkValid,
             }"

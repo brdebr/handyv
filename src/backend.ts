@@ -58,8 +58,13 @@ export const initHandlers = (appPath: string): void => {
     }
     shell.openPath(folderPath);
   });
-  ipcMain.handle("open-link", (ev, folderPath) => {
-    shell.openExternal(folderPath, { activate: true });
+  ipcMain.handle("open-link", (ev, link) => {
+    shell.openExternal(link, { activate: true });
+  });
+  ipcMain.handle("open-link-firefox", (ev, link) => {
+    const firefoxPath = "C:\\Program Files\\Mozilla Firefox\\";
+    // -private-window
+    exec(`"${firefoxPath}firefox.exe" ${link}`);
   });
   ipcMain.handle("open-folder-vscode", (ev, folderPath) => {
     if (!fs.lstatSync(folderPath).isDirectory()) {
