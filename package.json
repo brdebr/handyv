@@ -1,5 +1,9 @@
 {
   "name": "handyv",
+  "description": "Simple application to keep at hand folders, files and links",
+  "author": {
+    "name": "Bryan de Oliveira Brettas"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {

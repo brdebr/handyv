@@ -98,7 +98,7 @@
       </div>
     </div>
     <div>
-      <AcceptButton @click="saveHitem" :disabled="!valid" />
+      <AcceptButton title="Save item" @click="saveHitem" :disabled="!valid" />
     </div>
   </div>
 </template>
