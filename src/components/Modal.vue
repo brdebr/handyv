@@ -38,13 +38,13 @@ const emit = defineEmits(["update:visible"]);
 const modalContent = ref(true);
 
 const open = () => {
-  emit("update:visible", true)
-  modalContent.value = true
+  emit("update:visible", true);
+  modalContent.value = true;
 };
 const close = () => {
-  modalContent.value = false
+  modalContent.value = false;
   setTimeout(() => {
-    emit("update:visible", false)
+    emit("update:visible", false);
   }, 310);
 };
 </script>
@@ -55,7 +55,12 @@ const close = () => {
     z-index: 9000;
     @apply fixed top-0 left-0 w-screen h-screen;
     @apply bg-gradient-to-b from-[rgba(253,230,138,0.2)] to-[rgba(255,255,255,0.5)] backdrop-filter backdrop-blur-md;
-    @apply transition-colors;
+    @apply transition-all;
+
+    animation-name: bg_fade_kf;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+
     .modal-content {
       width: 100%;
       height: 100%;
@@ -65,6 +70,16 @@ const close = () => {
     }
   }
 }
+
+@keyframes bg_fade_kf {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .fade-y-enter-active,
 .fade-y-leave-active {
   transition: all 0.3s ease;
@@ -75,6 +90,6 @@ const close = () => {
 }
 .fade-y-leave-to {
   opacity: 0;
-  transform: translateY(80px);
+  transform: translateY(50px);
 }
 </style>
