@@ -1,7 +1,7 @@
 <template>
   <div
     class="terminal-button hitem-folder-button group"
-    :class="{ sudo: sudo }"
+    :class="{ sudo }"
     title="Open terminal in folder"
   >
     <svg

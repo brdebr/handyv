@@ -46,15 +46,19 @@
               p-3
               bg-white
               min-w-[50%] min-h-[450px]
+              max-w-[85%] max-h-[90%]
               rounded-md
               border border-blueGray-300
+              flex flex-col
             "
           >
             <div
               class="
                 border-b border-blueGray-300
-                -m-3
-                py-4
+                -mx-3
+                -mt-3
+                mb-2
+                py-3
                 px-4
                 flex
                 items-center
@@ -96,7 +100,19 @@
                 </svg>
               </div>
             </div>
-            <div></div>
+            <div class="overflow-auto px-1">
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolor exercitationem quas dolore in saepe consectetur mollitia corrupti ut iusto quos ipsum incidunt distinctio modi neque, explicabo iure impedit magnam!</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolor exercitationem quas dolore in saepe consectetur mollitia corrupti ut iusto quos ipsum incidunt distinctio modi neque, explicabo iure impedit magnam!</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolor exercitationem quas dolore in saepe consectetur mollitia corrupti ut iusto quos ipsum incidunt distinctio modi neque, explicabo iure impedit magnam!</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolor exercitationem quas dolore in saepe consectetur mollitia corrupti ut iusto quos ipsum incidunt distinctio modi neque, explicabo iure impedit magnam!</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+              <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo optio doloribus neque, ratione laudantium aspernatur dolore eveniet consequatur minus dolor perspiciatis rem similique tempore suscipit consectetur fugiat minima, molestias enim at harum temporibus. Ad laudantium facilis eaque, ut, delectus illo magni perferendis error eum obcaecati a quidem excepturi minima rerum quibusdam voluptatem quas eius fugit enim nobis. Ut eum harum optio molestiae, hic, magni labore neque reiciendis laboriosam minima beatae ullam iusto voluptates sequi. Sequi beatae minima voluptatum optio sint?</div>
+            </div>
           </div>
         </template>
       </Modal>

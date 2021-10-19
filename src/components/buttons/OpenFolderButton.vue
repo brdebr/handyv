@@ -1,7 +1,7 @@
 <template>
   <div
     class="folder-button hitem-folder-button group"
-    :class="{ selected: props.selected }"
+    :class="{ selected }"
     title="Open folder in Windows Explorer"
   >
     <svg
