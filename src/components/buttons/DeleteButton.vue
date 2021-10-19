@@ -21,7 +21,7 @@
   @apply hover:border-orange-700;
   @apply active:border-orange-800;
   > svg {
-    @apply h-7 w-7 px-1 py-1 text-red-500 transition-colors;
+    @apply h-7 w-7 p-1 text-red-500 transition-colors;
   }
 }
 </style>

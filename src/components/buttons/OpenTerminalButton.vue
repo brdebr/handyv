@@ -35,7 +35,7 @@ const props = defineProps({
     }
   }
   > svg {
-    @apply h-7 w-7 px-1 py-1 text-gray-500 transition-colors;
+    @apply h-7 w-7 p-1 text-gray-500 transition-colors;
   }
 }
 </style>

@@ -35,7 +35,7 @@ const props = defineProps({
   @apply hover:border-blue-700;
   @apply active:border-orange-800;
   > svg {
-    @apply h-7 w-7 px-1 py-1 transition-colors;
+    @apply h-7 w-7 p-1 transition-colors;
   }
 }
 </style>
