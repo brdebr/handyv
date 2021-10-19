@@ -65,9 +65,12 @@ export const initHandlers = (appPath: string): void => {
     const edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\";
     exec(`"${edgePath}msedge.exe" ${link}`);
   });
+  ipcMain.handle("open-link-firefox-private", (ev, link) => {
+    const firefoxPath = "C:\\Program Files\\Mozilla Firefox\\";
+    exec(`"${firefoxPath}firefox.exe" -private-window ${link}`);
+  });
   ipcMain.handle("open-link-firefox", (ev, link) => {
     const firefoxPath = "C:\\Program Files\\Mozilla Firefox\\";
-    // -private-window
     exec(`"${firefoxPath}firefox.exe" ${link}`);
   });
   ipcMain.handle("open-folder-vscode", (ev, folderPath) => {

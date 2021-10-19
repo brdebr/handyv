@@ -94,7 +94,7 @@
         <OpenFileButton :selected="type === 'file'" @click="selectFile" />
       </div>
       <div>
-        <LinkButton @click="selectLink" />
+        <LinkButton :selected="type === 'link'" @click="selectLink" />
       </div>
     </div>
     <div>

@@ -91,7 +91,7 @@
                 firefox
                 private
                 :default="false"
-                @click="openLinkFirefox(element.path)"
+                @click="openLinkFirefoxPrivate(element.path)"
               />
               <LinkButton
                 title="Open link in firefox"
@@ -148,6 +148,9 @@ const copyToClipBoard = async (path) => {
 
 const openLinkEdge = (path) => {
   ipcRenderer.invoke("open-link-edge", path);
+};
+const openLinkFirefoxPrivate = (path) => {
+  ipcRenderer.invoke("open-link-firefox-private", path);
 };
 const openLinkFirefox = (path) => {
   ipcRenderer.invoke("open-link-firefox", path);
