@@ -1,10 +1,15 @@
 <template>
   <teleport to="#modals" v-if="visible">
     <div class="modal">
-      <div class="modal-overlay">
+      <div class="modal-overlay" @click.prevent.capture="false">
         <div class="modal-content">
-          <transition name="fade-y">
-            <slot name="default">
+          <transition name="fade-y" appear mode="out-in">
+            <slot
+              name="default"
+              v-if="modalContent"
+              :close-content="closeContent"
+              :close="close"
+            >
               <div class="text-white">Hola soy un modal</div>
             </slot>
           </transition>
@@ -14,7 +19,7 @@
   </teleport>
   <slot name="activator" :open="open" :close="close">
     <div>
-      <button @click="setVisible(true)">Open modal</button>
+      <button @click="close()">Open modal</button>
     </div>
   </slot>
 </template>
@@ -32,9 +37,16 @@ const emit = defineEmits(["update:visible"]);
 
 const modalContent = ref(true);
 
-const open = () => emit("update:visible", true);
-const close = () => emit("update:visible", true);
-const closeContent = () => (modalContent.value = false);
+const open = () => {
+  emit("update:visible", true)
+  modalContent.value = true
+};
+const close = () => {
+  modalContent.value = false
+  setTimeout(() => {
+    emit("update:visible", false)
+  }, 310);
+};
 </script>
 
 <style lang="scss">
@@ -43,6 +55,7 @@ const closeContent = () => (modalContent.value = false);
     z-index: 9000;
     @apply fixed top-0 left-0 w-screen h-screen;
     @apply bg-gradient-to-b from-[rgba(253,230,138,0.2)] to-[rgba(255,255,255,0.5)] backdrop-filter backdrop-blur-md;
+    @apply transition-colors;
     .modal-content {
       width: 100%;
       height: 100%;
@@ -52,16 +65,16 @@ const closeContent = () => (modalContent.value = false);
     }
   }
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: transform opacity 0.5s;
+.fade-y-enter-active,
+.fade-y-leave-active {
+  transition: all 0.3s ease;
 }
-.fade-y-enter {
+.fade-y-enter-from {
   opacity: 0;
-  transform: translateY(-25%);
+  transform: translateY(-80px);
 }
 .fade-y-leave-to {
   opacity: 0;
-  transform: translateY(25%);
+  transform: translateY(80px);
 }
 </style>

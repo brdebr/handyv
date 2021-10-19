@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.main-container {
-    @apply min-h-screen;
-    @apply bg-gradient-to-b from-white to-blueGray-200;
-}
