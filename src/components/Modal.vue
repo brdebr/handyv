@@ -1,16 +1,20 @@
 <template>
   <teleport to="#modals" v-if="visible">
     <div class="modal">
-      <div class="modal-overlay" @click.prevent.capture="false">
+      <div
+        class="modal-overlay"
+        :class="{ closing: modalContentClosing }"
+        @click.prevent.capture="false"
+      >
         <div class="modal-content">
           <transition name="fade-y" appear mode="out-in">
             <slot
               name="default"
               v-if="modalContent"
-              :close-content="closeContent"
+              :open="open"
               :close="close"
             >
-              <div class="text-white">Hola soy un modal</div>
+              <div class="text-white p-4 rounded">Modal content goes here</div>
             </slot>
           </transition>
         </div>
@@ -36,6 +40,7 @@ const props = defineProps({
 const emit = defineEmits(["update:visible"]);
 
 const modalContent = ref(true);
+const modalContentClosing = ref(false);
 
 const open = () => {
   emit("update:visible", true);
@@ -43,7 +48,9 @@ const open = () => {
 };
 const close = () => {
   modalContent.value = false;
+  modalContentClosing.value = true;
   setTimeout(() => {
+    modalContentClosing.value = false;
     emit("update:visible", false);
   }, 310);
 };
@@ -68,6 +75,11 @@ const close = () => {
       align-items: center;
       justify-content: center;
     }
+    &.closing {
+      animation-name: bg_to_fade_kf;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+    }
   }
 }
 
@@ -77,6 +89,15 @@ const close = () => {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes bg_to_fade_kf {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
