@@ -2,7 +2,6 @@
   <div class="config-button hitem-folder-button">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-5 w-5"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -21,7 +20,7 @@
   @apply hover:border-blue-700;
   @apply active:border-orange-800;
   > svg {
-    @apply h-7 w-7 p-1 text-gray-500 transition-colors;
+    @apply sm:h-7 sm:w-7 w-6 h-6 p-1 text-gray-500 transition-colors;
   }
 }
 </style>

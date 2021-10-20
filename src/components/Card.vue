@@ -27,9 +27,9 @@
     >
       <slot name="title">
         <div class="font-semibold select-none">
-          {{ title }}
+          {{ cardTitle }}
         </div>
-        <CloseButton class="ml-auto" />
+        <CloseButton v-if="close" @click="close()" class="ml-auto" />
       </slot>
     </div>
     <div class="overflow-auto px-1">
@@ -48,9 +48,12 @@
 <script setup>
 import CloseButton from "@/components/buttons/CloseButton.vue";
 const props = defineProps({
-  title: {
+  cardTitle: {
     type: String,
     default: "Card title - set by :title",
+  },
+  close: {
+    type: Function,
   },
 });
 </script>

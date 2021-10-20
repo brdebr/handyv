@@ -16,8 +16,15 @@
           "
         />
       </div>
-      <div class="absolute top-3 right-0">
-        <ConfigButton />
+      <div class="absolute sm:top-3 sm:right-0 top-0 right-0">
+        <Modal v-model:visible="modalVisible">
+          <template #activator="{ open }">
+            <ConfigButton @click="open()" />
+          </template>
+          <template #default="{ close }">
+            <Card card-title="Configuration" :close="close" />
+          </template>
+        </Modal>
       </div>
     </div>
     <AddHitem />
@@ -31,6 +38,7 @@ import HitemsList from "@/components/HitemsList.vue";
 import AddHitem from "@/components/AddHitem.vue";
 import { useStore } from "vuex";
 import Modal from "@/components/Modal.vue";
+import Card from "@/components/Card.vue";
 import CloseButton from "@/components/buttons/CloseButton.vue";
 import ConfigButton from "@/components/buttons/ConfigButton.vue";
 
