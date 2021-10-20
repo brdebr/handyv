@@ -28,6 +28,7 @@
             gap-4
             px-3
             py-2
+            cursor-move
           "
           :class="`${element.type}`"
           @contextmenu="openFolder(element.path)"

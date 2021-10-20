@@ -29,6 +29,7 @@
             ring-orange-300
             transition-shadow
             placeholder-gray-500 placeholder-opacity-75
+            placeholder-shown:select-none
             focus:placeholder-opacity-30
             caret-orange-300
           "
@@ -168,9 +169,9 @@ const resetData = () => {
 };
 
 const selectLink = () => {
-  resetData()
-  type.value = 'link'
-}
+  resetData();
+  type.value = "link";
+};
 
 const selectFolder = async () => {
   const folderPath = await ipcRenderer.invoke("select-folder");
