@@ -6,7 +6,7 @@
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="group-hover:text-yellow-800 group-hover:active:text-green-600"
+      class="group-hover:text-yellow-800 dark:text-blue-800 group-hover:active:text-green-600"
       viewBox="0 0 20 20"
       fill="currentColor"
       v-if="default"
@@ -399,9 +399,9 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .file-button {
-  @apply border border-orange-400;
-  @apply hover:border-orange-700;
-  @apply active:border-orange-800;
+  @apply border border-orange-400 dark:border-blue-400;
+  @apply hover:border-orange-700 dark:border-blue-700;
+  @apply active:border-orange-800 dark:border-blue-800;
   &.item {
     > svg {
       @apply text-green-700;
@@ -430,7 +430,7 @@ const props = defineProps({
   }
   > svg {
     @apply h-7 w-7 p-1 transition-colors;
-    @apply text-yellow-500;
+    @apply text-yellow-500 dark:text-blue-500;
   }
 }
 

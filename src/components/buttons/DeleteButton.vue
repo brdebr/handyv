@@ -17,9 +17,9 @@
 <script setup></script>
 <style lang="scss">
 .delete-item {
-  @apply border border-orange-400;
-  @apply hover:border-orange-700;
-  @apply active:border-orange-800;
+  @apply border border-orange-400 dark:border-blue-400;
+  @apply hover:border-orange-700 dark:border-blue-700;
+  @apply active:border-orange-800 dark:border-blue-800;
   > svg {
     @apply h-7 w-7 p-1 text-red-500 transition-colors;
   }

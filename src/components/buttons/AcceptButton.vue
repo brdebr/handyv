@@ -33,7 +33,7 @@ const props = defineProps({
 .accept-button {
   @apply border border-green-600;
   @apply hover:border-blue-700;
-  @apply active:border-orange-800;
+  @apply active:border-orange-800 dark:border-blue-800;
   > svg {
     @apply h-7 w-7 p-1 transition-colors;
   }

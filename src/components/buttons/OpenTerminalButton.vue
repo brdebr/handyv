@@ -26,9 +26,9 @@ const props = defineProps({
 </script>
 <style lang="scss">
 .terminal-button {
-  @apply border border-orange-400;
+  @apply border border-orange-400 dark:border-blue-400;
   @apply hover:border-blue-700;
-  @apply active:border-orange-800;
+  @apply active:border-orange-800 dark:border-blue-800;
   &.sudo {
     > svg {
       @apply text-gray-700;

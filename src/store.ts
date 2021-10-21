@@ -5,10 +5,17 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     hitems: null,
+    dark: false,
   },
   mutations: {
     set_hitems(state, payload) {
       state.hitems = payload;
+    },
+    set_dark(state, payload) {
+      state.dark = payload;
+    },
+    togleTheme(state) {
+      state.dark = !state.dark;
     },
   },
   actions: {

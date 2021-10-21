@@ -16,9 +16,9 @@
 
 <style lang="scss">
 .config-button {
-  @apply border border-orange-500;
+  @apply border border-orange-500 dark:border-blue-500;
   @apply hover:border-blue-700;
-  @apply active:border-orange-800;
+  @apply active:border-orange-800 dark:border-blue-800;
   > svg {
     @apply sm:h-7 sm:w-7 w-6 h-6 p-1 text-gray-500 transition-colors;
   }

@@ -18,54 +18,15 @@
     >
       <template #item="{ element }">
         <div
-          class="
-            hitem-item
-            rounded
-            flex
-            items-center
-            flex-wrap
-            sm:flex-nowrap
-            gap-4
-            px-3
-            py-2
-            cursor-move
-          "
+          class="hitem-item"
           :class="`${element.type}`"
           @contextmenu="openFolder(element.path)"
         >
-          <div
-            class="
-              pt-2
-              sm:pt-0
-              w-full
-              sm:w-auto
-              font-semibold
-              overflow-ellipsis overflow-hidden
-              select-none
-              whitespace-nowrap
-              sm:min-w-[200px]
-              lg:min-w-[250px]
-              xl:min-w-[300px]
-              2xl:min-w-[350px]
-            "
-            :title="element.name"
-          >
+          <div class="hitem-item__title" :title="element.name">
             {{ element.name }}
           </div>
           <div class="flex items-center w-full sm:flex-1 sm:w-1">
-            <div
-              class="
-                text-gray-900
-                flex-grow-0 flex-shrink
-                text-opacity-60
-                leading-1
-                overflow-ellipsis overflow-hidden
-                pr-2
-                select-none
-                whitespace-nowrap
-              "
-              :title="element.path"
-            >
+            <div class="hitem-item__path" :title="element.path">
               {{ element.path }}
             </div>
             <div class="ml-auto flex gap-2" v-if="element.type === 'directory'">
@@ -182,18 +143,50 @@ const openTerminalSudo = (path) => {
 }
 .hitem-item {
   @apply backdrop-filter backdrop-blur-md overflow-hidden transition-all;
+  @apply rounded;
+  @apply flex gap-4 flex-wrap items-center;
+  @apply sm:flex-nowrap;
+  @apply px-3 py-2;
+  @apply cursor-move;
+  &__title {
+    @apply pt-2;
+    @apply sm:pt-0;
+    @apply w-full;
+    @apply sm:w-auto;
+    @apply font-semibold;
+    @apply overflow-ellipsis overflow-hidden;
+    @apply select-none;
+    @apply whitespace-nowrap;
+    @apply sm:min-w-[200px];
+    @apply lg:min-w-[250px];
+    @apply xl:min-w-[300px];
+    @apply 2xl:min-w-[350px];
+  }
+  &__path {
+    @apply text-gray-900 dark:text-blueGray-100;
+    @apply flex-grow-0 flex-shrink;
+    @apply text-opacity-60 dark:text-opacity-60;
+    @apply overflow-ellipsis overflow-hidden;
+    @apply pr-2;
+    @apply select-none;
+    @apply whitespace-nowrap;
+  }
   &.directory {
     @apply bg-orange-300 bg-opacity-20;
     @apply hover:bg-orange-400 hover:bg-opacity-20;
+    @apply dark:bg-orange-800 bg-opacity-20 dark:bg-opacity-20;
+    @apply dark:hover:bg-orange-800 hover:bg-opacity-20 dark:hover:bg-opacity-40;
   }
   &.link {
     @apply bg-blue-300 bg-opacity-20;
     @apply hover:bg-blue-400 hover:bg-opacity-20;
+    @apply bg-blue-800 bg-opacity-20 dark:bg-opacity-20 ;
+    @apply hover:bg-blue-900 hover:bg-opacity-20 dark:hover:bg-opacity-40 ;
   }
 }
 .hitem-folder-button {
   @apply rounded;
-  @apply bg-white hover:bg-blueGray-100;
+  @apply bg-white hover:bg-blueGray-100 dark:bg-blueGray-900;
   @apply transition-colors hover:cursor-pointer;
 }
 </style>

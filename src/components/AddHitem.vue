@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      bg-yellow-200
-      mb-4
-      py-3
-      px-3
-      rounded
-      flex
-      gap-6
-      items-center
-      justify-evenly
-    "
-  >
+  <div class="add-hitem-cardrow">
     <div class="font-semibold select-none whitespace-nowrap">Add Item</div>
     <div class="flex-1 flex gap-2 w-1">
       <div class="w-4/12">
@@ -27,11 +15,15 @@
             ring-1
             focus:ring-2
             ring-orange-300
+            dark:ring-blue-800
             transition-shadow
             placeholder-gray-500 placeholder-opacity-75
+            dark:placeholder-gray-700 dark:placeholder-opacity-75
             placeholder-shown:select-none
-            focus:placeholder-opacity-30
+            focus:placeholder-opacity-30 dark:focus:placeholder-opacity-30
             caret-orange-300
+            dark:caret-blue-800
+            dark:bg-blueGray-900
           "
           placeholder="Item name"
           v-model="name"
@@ -39,7 +31,15 @@
       </div>
       <div class="w-8/12">
         <div
-          class="h-7 rounded flex items-center bg-white select-none"
+          class="
+            h-7
+            rounded
+            flex
+            items-center
+            bg-white
+            dark:bg-blueGray-800
+            select-none
+          "
           :title="path"
           v-if="type != 'link'"
         >
@@ -49,10 +49,12 @@
               w-full
               overflow-ellipsis overflow-hidden
               whitespace-nowrap
-              text-gray-800 text-opacity-75
+              text-gray-800
+              dark:text-blueGray-100
+              text-opacity-75 dark:text-opacity-75
             "
             :class="{
-              'text-opacity-50': !path,
+              'text-opacity-50 dark:text-opacity-50': !path,
             }"
           >
             {{ path || "Item path will show here once you select one..." }}
@@ -71,7 +73,8 @@
               ring-orange-300
               transition-shadow
               placeholder-gray-500 placeholder-opacity-75
-              focus:placeholder-opacity-30
+              focus:placeholder-opacity-30 dark:focus:placeholder-opacity-30
+              dark:bg-blueGray-900
               caret-orange-300
             "
             placeholder="Type link here"
@@ -185,4 +188,16 @@ const selectFile = async () => {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.add-hitem-cardrow {
+  @apply bg-yellow-200 dark:bg-indigo-900 dark:bg-opacity-70;
+  @apply mb-4;
+  @apply py-3;
+  @apply px-3;
+  @apply rounded;
+  @apply flex;
+  @apply gap-6;
+  @apply items-center;
+  @apply justify-evenly;
+}
+</style>
