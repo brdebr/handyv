@@ -31,7 +31,7 @@ const props = defineProps({
   @apply hover:border-orange-700 dark:border-blue-700;
   @apply active:border-orange-800 dark:border-blue-800;
   &.selected {
-    @apply border-blue-800 bg-blueGray-400;
+    @apply border-blue-800 bg-blueGray-400 dark:bg-blueGray-50;
     > svg {
       @apply text-white;
     }

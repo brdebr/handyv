@@ -3,6 +3,8 @@
     class="
       p-3
       bg-white
+      dark:bg-blueGray-800
+      dark:text-blueGray-50
       min-w-[85%]
       sm:min-w-[450px] sm:w-[600px]
       max-w-[85%]

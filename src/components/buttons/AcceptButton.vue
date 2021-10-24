@@ -8,8 +8,8 @@
       viewBox="0 0 20 20"
       fill="currentColor"
       :class="{
-        'text-gray-200': disabled,
-        'text-green-700': !disabled,
+        'text-gray-200 dark:text-gray-700': disabled,
+        'text-green-700 dark:text-green-400': !disabled,
       }"
     >
       <path

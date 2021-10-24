@@ -171,17 +171,46 @@ const openTerminalSudo = (path) => {
     @apply select-none;
     @apply whitespace-nowrap;
   }
+  // &.directory,
+  // &.link,
+  // &.file {
+  //   @apply bg-opacity-20;
+  //   @apply hover:bg-opacity-20;
+  //   @apply dark:bg-opacity-20;
+  //   @apply dark:hover:bg-opacity-40;
+  // }
   &.directory {
-    @apply bg-orange-300 bg-opacity-20;
-    @apply hover:bg-orange-400 hover:bg-opacity-20;
-    @apply dark:bg-orange-800 bg-opacity-20 dark:bg-opacity-20;
-    @apply dark:hover:bg-orange-800 hover:bg-opacity-20 dark:hover:bg-opacity-40;
+    @apply bg-orange-300;
+    @apply hover:bg-orange-400;
+    @apply dark:bg-orange-800;
+    @apply dark:hover:bg-orange-700;
+
+    @apply bg-opacity-20;
+    @apply hover:bg-opacity-20;
+    @apply dark:bg-opacity-20;
+    @apply dark:hover:bg-opacity-40;
   }
   &.link {
-    @apply bg-blue-300 bg-opacity-20;
-    @apply hover:bg-blue-400 hover:bg-opacity-20;
-    @apply bg-blue-800 bg-opacity-20 dark:bg-opacity-20 ;
-    @apply hover:bg-blue-900 hover:bg-opacity-20 dark:hover:bg-opacity-40 ;
+    @apply bg-blue-300;
+    @apply hover:bg-blue-400;
+    @apply dark:bg-blue-800;
+    @apply dark:hover:bg-blue-700;
+
+    @apply bg-opacity-20;
+    @apply hover:bg-opacity-20;
+    @apply dark:bg-opacity-20;
+    @apply dark:hover:bg-opacity-40;
+  }
+  &.file {
+    @apply bg-emerald-300;
+    @apply hover:bg-emerald-400;
+    @apply dark:bg-emerald-500;
+    @apply dark:hover:bg-emerald-600;
+
+    @apply bg-opacity-20;
+    @apply hover:bg-opacity-20;
+    @apply dark:bg-opacity-20;
+    @apply dark:hover:bg-opacity-40;
   }
 }
 .hitem-folder-button {

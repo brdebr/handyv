@@ -100,19 +100,4 @@ const close = () => {
     opacity: 0;
   }
 }
-
-.fade-y-enter-active{
-  transition: all 0.3s ease;
-}
-.fade-y-leave-active {
-  transition: all 0.25s ease;
-}
-.fade-y-enter-from {
-  opacity: 0;
-  transform: translateY(-80px);
-}
-.fade-y-leave-to {
-  opacity: 0;
-  transform: translateY(50px);
-}
 </style>

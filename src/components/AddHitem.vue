@@ -20,10 +20,10 @@
             placeholder-gray-500 placeholder-opacity-75
             dark:placeholder-gray-700 dark:placeholder-opacity-75
             placeholder-shown:select-none
-            focus:placeholder-opacity-30 dark:focus:placeholder-opacity-30
+            focus:placeholder-opacity-30
+            dark:focus:placeholder-opacity-30
             caret-orange-300
-            dark:caret-blue-800
-            dark:bg-blueGray-900
+            dark:caret-blue-800 dark:bg-blueGray-900
           "
           placeholder="Item name"
           v-model="name"
@@ -51,7 +51,8 @@
               whitespace-nowrap
               text-gray-800
               dark:text-blueGray-100
-              text-opacity-75 dark:text-opacity-75
+              text-opacity-75
+              dark:text-opacity-75
             "
             :class="{
               'text-opacity-50 dark:text-opacity-50': !path,
@@ -71,11 +72,14 @@
               ring-1
               focus:ring-2
               ring-orange-300
+              dark:ring-blue-800
               transition-shadow
               placeholder-gray-500 placeholder-opacity-75
-              focus:placeholder-opacity-30 dark:focus:placeholder-opacity-30
-              dark:bg-blueGray-900
+              placeholder-shown:select-none
+              focus:placeholder-opacity-30
+              dark:focus:placeholder-opacity-30
               caret-orange-300
+              dark:caret-blue-800 dark:bg-blueGray-900
             "
             placeholder="Type link here"
             :class="{

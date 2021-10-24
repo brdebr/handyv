@@ -5,6 +5,7 @@
       rounded-md
       p-1
       hover:border-blueGray-500
+      dark:hover:border-blue-300
       active:border-red-500
       transition-colors
       cursor-pointer
@@ -18,6 +19,7 @@
         w-4
         text-gray-400
         group-hover:text-gray-700
+        dark:group-hover:text-gray-300
         group-active:text-red-700
         transition-colors
       "
