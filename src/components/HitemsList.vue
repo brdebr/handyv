@@ -25,7 +25,7 @@
           <div class="hitem-item__title" :title="element.name">
             {{ element.name }}
           </div>
-          <div class="flex items-center w-full sm:flex-1 sm:w-1">
+          <div class="flex items-center w-full sm:flex-1 sm:w-px">
             <div class="hitem-item__path" :title="element.path">
               {{ element.path }}
             </div>
@@ -38,6 +38,11 @@
                 sudo
               />
               <OpenTerminalButton @click="openTerminal(element.path)" />
+              <VscodeButton @click="openInVscode(element.path)" />
+              <DeleteButton @click="deleteItem(element.path)" />
+            </div>
+            <div class="ml-auto flex gap-2" v-else-if="element.type === 'file'">
+              <ClipboardButton @click="copyToClipBoard(element.path)" />
               <VscodeButton @click="openInVscode(element.path)" />
               <DeleteButton @click="deleteItem(element.path)" />
             </div>
