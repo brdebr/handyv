@@ -1,5 +1,6 @@
 module.exports = {
   lintOnSave: false,
+  productionSourceMap: false,
   pluginOptions: {
     electronBuilder: {
       nodeIntegration: true,
@@ -7,6 +8,9 @@ module.exports = {
       builderOptions: {
         win: {
           target: "portable",
+        },
+        portable: {
+          splashImage: "src/assets/splash.bmp",
         },
       },
     },
