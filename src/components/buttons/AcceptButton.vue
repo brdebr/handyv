@@ -1,6 +1,9 @@
 <template>
   <div
     class="accept-button hitem-folder-button group"
+    :class="{
+      disabled,
+    }"
     title="Copy path to clipboard"
   >
     <svg
@@ -34,6 +37,9 @@ const props = defineProps({
   @apply border border-green-600;
   @apply hover:border-blue-700;
   @apply active:border-orange-800 dark:border-blue-800;
+  &.disabled{
+    @apply cursor-not-allowed;
+  }
   > svg {
     @apply h-7 w-7 p-1 transition-colors;
   }
