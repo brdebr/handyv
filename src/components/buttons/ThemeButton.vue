@@ -6,18 +6,27 @@
     <transition name="fade-y" mode="out-in">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="group-hover:text-blueGray-800 dark:group-hover:text-blueGray-50 group-hover:active:text-sky-500"
+        class="
+          group-hover:text-blueGray-800
+          dark:group-hover:text-blueGray-50
+          group-hover:active:text-sky-500
+        "
         viewBox="0 0 20 20"
         fill="currentColor"
-        v-if="!isDark"
+        v-if="isDark"
       >
         <path
+          class="translate-x-[1px] -translate-y-px"
           d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
         />
       </svg>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="group-hover:text-blueGray-800 dark:group-hover:text-blueGray-50 group-hover:active:text-sky-500"
+        class="
+          group-hover:text-blueGray-800
+          dark:group-hover:text-blueGray-50
+          group-hover:active:text-sky-500
+        "
         viewBox="0 0 20 20"
         fill="currentColor"
         v-else
