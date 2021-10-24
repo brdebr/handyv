@@ -1,8 +1,10 @@
 <template>
-  <div class="add-hitem-cardrow">
-    <div class="font-semibold select-none whitespace-nowrap">Add Item</div>
-    <div class="flex-1 flex gap-2 w-1">
-      <div class="w-4/12">
+  <div class="add-hitem-cardrow flex flex-wrap sm:flex-nowrap">
+    <div class="font-semibold select-none whitespace-nowrap w-full sm:w-auto">
+      Add Item
+    </div>
+    <div class="flex-1 flex gap-2 w-full sm:w-px flex-wrap sm:flex-nowrap">
+      <div class="w-full sm:w-4/12">
         <input
           type="text"
           :title="name"
@@ -29,7 +31,7 @@
           v-model="name"
         />
       </div>
-      <div class="w-8/12">
+      <div class="w-full sm:w-8/12">
         <div
           class="
             h-7
@@ -91,22 +93,27 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-2">
+    <div class="flex gap-2 w-full sm:w-auto justify-evenly">
       <div>
-        <OpenFolderButton
+        <OpenFolderButton class="w-14 sm:w-auto flex justify-center sm:block"
           :selected="type === 'directory'"
           @click="selectFolder"
         />
       </div>
       <div>
-        <OpenFileButton :selected="type === 'file'" @click="selectFile" />
+        <OpenFileButton class="w-14 sm:w-auto flex justify-center sm:block" :selected="type === 'file'" @click="selectFile" />
       </div>
       <div>
-        <LinkButton :selected="type === 'link'" @click="selectLink" />
+        <LinkButton class="w-14 sm:w-auto flex justify-center sm:block" :selected="type === 'link'" @click="selectLink" />
       </div>
     </div>
-    <div>
-      <AcceptButton title="Save item" @click="saveHitem" :disabled="!valid" />
+    <div class="w-full sm:w-auto">
+      <AcceptButton
+        class="w-full sm:w-auto flex justify-center sm:block"
+        title="Save item"
+        @click="saveHitem"
+        :disabled="!valid"
+      />
     </div>
   </div>
 </template>
@@ -200,7 +207,7 @@ const selectFile = async () => {
   @apply px-3;
   @apply rounded;
   @apply flex;
-  @apply gap-6;
+  @apply gap-3 sm:gap-6;
   @apply items-center;
   @apply justify-evenly;
 }
