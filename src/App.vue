@@ -56,7 +56,47 @@
             <ConfigButton @click="open()" />
           </template>
           <template #default="{ close }">
-            <Card card-title="Configuration" :close="close" />
+            <Card card-title="Configuration" :close="close">
+              <template #body>
+                <div class="configuration-rows mt-3 flex gap-6 flex-col">
+                  <div>
+                    <label class="flex gap-3 items-center">
+                      <span> Chrome path : </span>
+                      <input type="text" :title="'variable--'" placeholder="Path will show here..." class="h-input" />
+                      <div><OpenFolderButton /></div>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="flex gap-3 items-center">
+                      <span> Firefox path : </span>
+                      <input type="text" :title="'variable--'" placeholder="Path will show here..." class="h-input" />
+                      <div><OpenFolderButton /></div>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="flex gap-3 items-center">
+                      <span> Notepad++ path : </span>
+                      <input type="text" :title="'variable--'" placeholder="Path will show here..." class="h-input" />
+                      <div><OpenFolderButton /></div>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="flex gap-3 items-center">
+                      <span> Terminal path : </span>
+                      <input type="text" :title="'variable--'" placeholder="Path will show here..." class="h-input" />
+                      <div><OpenFolderButton /></div>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="flex gap-3 items-center">
+                      <span> Default chrome profile : </span>
+                      <input type="text" :title="'variable--'" placeholder="Path will show here..." class="h-input" />
+                      <div><OpenFolderButton /></div>
+                    </label>
+                  </div>
+                </div>
+              </template>
+            </Card>
           </template>
         </Modal>
       </div>
@@ -73,9 +113,9 @@ import AddHitem from "@/components/AddHitem.vue";
 import { useStore } from "vuex";
 import Modal from "@/components/Modal.vue";
 import Card from "@/components/Card.vue";
-import CloseButton from "@/components/buttons/CloseButton.vue";
 import ConfigButton from "@/components/buttons/ConfigButton.vue";
 import ThemeButton from "@/components/buttons/ThemeButton.vue";
+import OpenFolderButton from "@/components/buttons/OpenFolderButton.vue";
 
 const modalVisible = ref(false);
 
@@ -125,17 +165,12 @@ const toggleTheme = () => {
 }
 html.dark {
   --scrollbar-hue: 234;
-  ::-webkit-scrollbar {
-    width: 7px;
-  }
   ::-webkit-scrollbar-thumb {
-    border-radius: 0px;
     background: hsla(230, 100%, 27%, 0.5);
     &:hover {
       background: hsla(230, 88%, 40%, 0.562);
     }
     &:active {
-      border-radius: 14px;
       background: hsla(241, 99%, 46%, 0.747);
     }
   }
@@ -145,5 +180,48 @@ html.dark {
       background: hsla(231, 84%, 24%, 0.8);
     }
   }
+}
+
+.configuration-rows {
+  > * {
+    label {
+      @apply select-none;
+      span {
+        @apply min-w-[180px];
+      }
+    }
+  }
+}
+
+.h-input{
+  @apply h-7;
+  @apply px-2;
+  @apply w-full;
+  @apply rounded;
+  @apply outline-none;
+  @apply transition-shadow;
+
+  @apply bg-blueGray-50;
+  @apply dark:bg-blueGray-900;
+
+  @apply ring-1;
+  @apply focus:ring-2;
+
+  @apply ring-orange-300;
+  @apply dark:ring-blue-800;
+
+  &--invalid{
+    @apply ring-red-500;
+    @apply dark:ring-red-400;
+  }
+  
+  @apply placeholder-gray-500 placeholder-opacity-75;
+  @apply dark:placeholder-gray-700 dark:placeholder-opacity-75;
+  @apply placeholder-shown:select-none;
+  
+  @apply focus:placeholder-opacity-30;
+  @apply dark:focus:placeholder-opacity-30;
+  @apply caret-orange-300;
+  @apply dark:caret-blue-800;
 }
 </style>

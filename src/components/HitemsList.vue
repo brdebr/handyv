@@ -152,7 +152,7 @@ const openTerminalSudo = (path) => {
   @apply flex gap-4 flex-wrap items-center;
   @apply sm:flex-nowrap;
   @apply px-3 py-2;
-  @apply cursor-move;
+  cursor: grab;
   &__title {
     @apply pt-2;
     @apply sm:pt-0;
@@ -193,7 +193,7 @@ const openTerminalSudo = (path) => {
     @apply bg-opacity-20;
     @apply hover:bg-opacity-20;
     @apply dark:bg-opacity-20;
-    @apply dark:hover:bg-opacity-40;
+    @apply dark:hover:bg-opacity-30;
   }
   &.link {
     @apply bg-blue-300;
@@ -204,7 +204,7 @@ const openTerminalSudo = (path) => {
     @apply bg-opacity-20;
     @apply hover:bg-opacity-20;
     @apply dark:bg-opacity-20;
-    @apply dark:hover:bg-opacity-40;
+    @apply dark:hover:bg-opacity-30;
   }
   &.file {
     @apply bg-emerald-300;
@@ -214,8 +214,8 @@ const openTerminalSudo = (path) => {
 
     @apply bg-opacity-20;
     @apply hover:bg-opacity-20;
-    @apply dark:bg-opacity-20;
-    @apply dark:hover:bg-opacity-40;
+    @apply dark:bg-opacity-10;
+    @apply dark:hover:bg-opacity-20;
   }
 }
 .hitem-folder-button {

@@ -8,25 +8,7 @@
         <input
           type="text"
           :title="name"
-          class="
-            h-7
-            px-2
-            w-full
-            rounded
-            outline-none
-            ring-1
-            focus:ring-2
-            ring-orange-300
-            dark:ring-blue-800
-            transition-shadow
-            placeholder-gray-500 placeholder-opacity-75
-            dark:placeholder-gray-700 dark:placeholder-opacity-75
-            placeholder-shown:select-none
-            focus:placeholder-opacity-30
-            dark:focus:placeholder-opacity-30
-            caret-orange-300
-            dark:caret-blue-800 dark:bg-blueGray-900
-          "
+          class="h-input"
           placeholder="Item name"
           v-model="name"
         />
@@ -65,27 +47,10 @@
         </div>
         <div v-else class="flex items-center h-full">
           <input
-            class="
-              h-7
-              px-2
-              w-full
-              rounded
-              outline-none
-              ring-1
-              focus:ring-2
-              ring-orange-300
-              dark:ring-blue-800
-              transition-shadow
-              placeholder-gray-500 placeholder-opacity-75
-              placeholder-shown:select-none
-              focus:placeholder-opacity-30
-              dark:focus:placeholder-opacity-30
-              caret-orange-300
-              dark:caret-blue-800 dark:bg-blueGray-900
-            "
+            class="h-input"
             placeholder="Type link here"
             :class="{
-              'ring-red-500': !linkValid,
+              'h-input--invalid': !linkValid,
             }"
             v-model="path"
             type="text"
@@ -95,16 +60,25 @@
     </div>
     <div class="flex gap-2 w-full sm:w-auto justify-evenly">
       <div>
-        <OpenFolderButton class="w-14 sm:w-auto flex justify-center sm:block"
+        <OpenFolderButton
+          class="w-14 sm:w-auto flex justify-center sm:block"
           :selected="type === 'directory'"
           @click="selectFolder"
         />
       </div>
       <div>
-        <OpenFileButton class="w-14 sm:w-auto flex justify-center sm:block" :selected="type === 'file'" @click="selectFile" />
+        <OpenFileButton
+          class="w-14 sm:w-auto flex justify-center sm:block"
+          :selected="type === 'file'"
+          @click="selectFile"
+        />
       </div>
       <div>
-        <LinkButton class="w-14 sm:w-auto flex justify-center sm:block" :selected="type === 'link'" @click="selectLink" />
+        <LinkButton
+          class="w-14 sm:w-auto flex justify-center sm:block"
+          :selected="type === 'link'"
+          @click="selectLink"
+        />
       </div>
     </div>
     <div class="w-full sm:w-auto">
